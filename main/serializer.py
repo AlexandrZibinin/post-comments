@@ -10,6 +10,7 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = ("__all__",)
         read_only_fields = (
+            "author",
             "created_at",
             "updated_at",
         )
@@ -20,6 +21,7 @@ class CommentsSerializer(serializers.ModelSerializer):
         model = Comment
         fields = ("__all__",)
         read_only_fields = (
+            "author",
             "created_at",
             "updated_at",
         )

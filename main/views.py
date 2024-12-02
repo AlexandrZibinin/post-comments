@@ -10,6 +10,11 @@ class PostCreateAPIView(generics.CreateAPIView):
     serializer_class = PostSerializer
     permission_classes = ( IsAuthenticated, )
 
+    def perform_create(self, serializer):
+        post = serializer.save()
+        post.author = self.request.user
+        post.save()
+
 
 class PostListAPIView(generics.ListAPIView):
     serializer_class = PostSerializer
@@ -38,6 +43,11 @@ class PostDestroyAPIView(generics.DestroyAPIView):
 class CommentCreateAPIView(generics.CreateAPIView):
     serializer_class = CommentsSerializer
     permission_classes = ( IsAuthenticated, )
+
+    def perform_create(self, serializer):
+        comment = serializer.save()
+        comment.author = self.request.user
+        comment.save()
 
 
 class CommentListAPIView(generics.ListAPIView):
