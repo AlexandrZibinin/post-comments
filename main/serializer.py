@@ -8,7 +8,7 @@ class PostSerializer(serializers.ModelSerializer):
     title = serializers.CharField(validators=[validate_title])
     class Meta:
         model = Post
-        fields = ("__all__",)
+        fields = ("title", "text", "image", "author", "created_at", "updated_at")
         read_only_fields = (
             "author",
             "created_at",
