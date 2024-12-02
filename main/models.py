@@ -1,6 +1,6 @@
 from django.db import models
 
-from config.settings import NULLABLE
+from config.settings import NULLABLE, AUTH_USER_MODEL
 from users.models import User
 
 
@@ -11,7 +11,7 @@ class Post(models.Model):
     text = models.TextField(verbose_name="Текст")
     image = models.ImageField(upload_to="main/", verbose_name="Изображение", **NULLABLE)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, verbose_name="Автор", related_name="author_post"
+        AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Автор", related_name="author_post"
     )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата создания")
     updated_at = models.DateTimeField(
@@ -33,7 +33,7 @@ class Comment(models.Model):
         Post, verbose_name="Пост", on_delete=models.CASCADE, related_name="comments"
     )
     author = models.ForeignKey(
-        User,
+        AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         verbose_name="Автор",
         related_name="author_comment",
