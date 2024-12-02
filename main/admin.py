@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from main.models import Post
+from main.models import Post, Comment
 
 
 @admin.register(Post)
@@ -20,3 +20,6 @@ class LinkAdmin(admin.ModelAdmin):
         return format_html(
             f'<a href="/admin/main/post/{obj.author.id}/change">Автор: {obj.author.username}</a>'
         )
+
+
+admin.site.register(Comment)
