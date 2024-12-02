@@ -10,6 +10,7 @@ def validate_mail(value):
     if val_domain not in allowed_resource:
         raise ValidationError("Недопустимая почта")
 
+
 def validate_pass(value):
     val_pass = value
     if len(val_pass) < 8:
@@ -18,10 +19,11 @@ def validate_pass(value):
 
 def validate_age(value):
     today = date.today()
-    age = today.year - value.year - ((today.month, today.day) < (value.month, value.day))
+    age = (
+        today.year - value.year - ((today.month, today.day) < (value.month, value.day))
+    )
 
     if age < 18:
-        raise ValidationError({'age': 'Пользователь должен быть старше 18 лет.'})
+        raise ValidationError({"age": "Пользователь должен быть старше 18 лет."})
 
     return value
-

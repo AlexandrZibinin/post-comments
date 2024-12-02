@@ -6,6 +6,7 @@ from main.validators import validate_title
 
 class PostSerializer(serializers.ModelSerializer):
     title = serializers.CharField(validators=[validate_title])
+
     class Meta:
         model = Post
         fields = ("title", "text", "image", "author", "created_at", "updated_at")

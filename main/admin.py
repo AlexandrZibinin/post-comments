@@ -12,7 +12,7 @@ class LinkAdmin(admin.ModelAdmin):
         "author",
         "created_at",
         "updated_at",
-        "view_author_link"
+        "view_author_link",
     )
     list_filter = ["created_at"]
 
